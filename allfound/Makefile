@@ -1,20 +1,17 @@
 CC=gcc
 
-dwebmake: dweb.c dwebsvr.c
-	$(CC) -o dweb dweb.c dwebsvr.c -pthread -std=gnu99
+allfoundmake: allfound.c dwebsvr.c
+	$(CC) -o allfound allfound.c dwebsvr.c -pthread -std=gnu99
 
-vocore: dweb.c dwebsvr.c
+vocore: allfound.c dwebsvr.c
 	export STAGING_DIR=$$PWD; \
-`find /home -name mipsel-openwrt-linux-gcc -print -quit -print 2>/dev/null` -o dweb -Os -s dweb.c dwebsvr.c -pthread
+`find /home -name mipsel-openwrt-linux-gcc -print -quit -print 2>/dev/null` -o allfound -Os -s allfound.c dwebsvr.c -pthread
 
-wr740n: dweb.c dwebsvr.c
+wr740n: allfound.c dwebsvr.c
 	export STAGING_DIR=$$PWD; \
-`find /home -name mips-openwrt-linux-uclibc-gcc -print -quit -print 2>/dev/null` -o dweb -Os -s dweb.c dwebsvr.c -pthread
-
-simple: simple.c dwebsvr.c
-	$(CC) -o simple simple.c dwebsvr.c -pthread -std=gnu99
+`find /home -name mips-openwrt-linux-uclibc-gcc -print -quit -print 2>/dev/null` -o allfound -Os -s allfound.c dwebsvr.c -pthread
 
 .PHONY: clean
 
 clean:
-	rm -f *.o *.exe dweb simple
+	rm -f *.o *.exe allfound
