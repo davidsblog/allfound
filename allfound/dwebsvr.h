@@ -75,6 +75,7 @@ void write_html(int socket_fd, char *head, char *html);
 void forbidden_403(struct hitArgs *args, char *info);
 void notfound_404(struct hitArgs *args, char *info);
 void ok_200(struct hitArgs *args, char *custom_headers, char *html, char *path);
+void found_302(struct hitArgs *args, char *url, char *path);
 void logger(log_type type, char *s1, char *s2, int socket_fd);
 void webhit(struct hitArgs *args);
 

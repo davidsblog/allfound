@@ -82,7 +82,7 @@ void send_file_response(struct hitArgs *args, char *path, char *request_body, in
     // never send a 404 ... send the homepage instead.
     if (content_type == NULL || (file_id = open(path, O_RDONLY), file_id == -1))
     {
-        send_file_response(args, "index.html", request_body, 10);
+        found_302(args, NULL, path);
         return;
     }
     
