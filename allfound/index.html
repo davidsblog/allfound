@@ -1,63 +1,182 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="/favicon.ico">
+                                
         <title>Home</title>
-        <link rel="stylesheet" href="/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+                                
+        <!-- Bootstrap core CSS -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+                                    
+                                    
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+                                    
+        <!-- Custom styles for this template -->
+        <link href="/css/carousel.css" rel="stylesheet">
     </head>
     
+    <!-- NAVBAR
+     ================================================== -->
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-wrapper">
             <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>&nbsp;webserver
-                    </a>
-                </div>
+                
+                <nav class="navbar navbar-inverse navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Demo.</a>
+                        </div>
+                    </div>
+                </nav>
+                
             </div>
-        </nav>
-        
-        <div class="jumbotron">
-            <div class="container">
-                <div class="col-md-6">
-                    <h1>It works!</h1>
-                    <p>Welcome, this is a test homepage.</p>
-                </div>
-            </div>
-            
         </div>
         
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-md-4">
-                    <div class="embed-responsive embed-responsive-4by3">
-                        <video class="embed-responsive-item" controls>
-                            <source src="/test.mp4" type="video/mp4">
-                                </video>
-                    </div>
+        
+        <!-- Carousel
+         ================================================== -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>A free read: Linux Voice #1.</h1>
+                                <p>Want something to read? Why not take a look at <code>Linux Voice</code>?</p>
+                                <p>This was the launch issue. Learn about secure emails with PGP, delicious beer with BrewPi, and understand Bitcoin.</p>
+                                <p><a class="btn btn-lg btn-primary" href="/files/Linux-Voice-Issue-001.pdf" role="button">Read</a></p>
+                            </div>
+                        </div>
                 </div>
-                
-                <div class="col-md-3">
-                    <h2>But ... why?</h2>
-                    <p>Mainly because I wanted a small webserver, and I wanted to know how all the code worked inside. I'm planning to use it as a very small Web API, most likely hosted on a Raspberry Pi or a cheap router running OpenWrt, probably both :-).</p>
+                <div class="item">
+                    <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Want more? Linux Voice #2.</h1>
+                                <p>Write your own kernel module, learn how Munich switched 15,000 workers to Linux, and fix UEFI boot problems.</p>
+                                <p><a class="btn btn-lg btn-primary" href="/files/Linux-Voice-Issue-002.pdf" role="button">Read</a></p>
+                            </div>
+                        </div>
                 </div>
-                <div class="col-md-3">
-                    <h2>History</h2>
-                    <p>I owe a lot to <a href="http://www.ibm.com/developerworks/systems/library/es-nweb/index.html">nweb</a> which was my starting point. But I am allowing extra things like HTTP POSTs and serving dynamic content. Unlike nweb, this code does not run as a daemon, and logging goes to the console by default, although you can override the logging function and do something else if you like.</p>
-                </div>
-                <div class="col-md-2">
-                    <h2>License</h2>
-                    <p>dweb is released under the MIT License.</p>
-                    <p>The source code is on <a href="http://github.com/davidsblog/allfound">GitHub</a>.</p>
-                    <p class="text-muted">&copy; 2015 <a href="http://www.codehosting.net">David's Blog</a></p>
+                <div class="item">
+                    <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Third times a charm:<br/>Linux Voice #3.</h1>
+                                <p>Become a command line guru, search for comets with Python, and discover the awesome works of Alan Turing.</p>
+                                <p><a class="btn btn-lg btn-primary" href="/files/Linux-Voice-Issue-003.pdf" role="button">Read</a></p>
+                            </div>
+                        </div>
                 </div>
             </div>
-
-        </div> <!-- /container -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div><!-- /.carousel -->
+        
+        
+        <!-- Marketing messaging and featurettes
+         ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+        
+        <div class="container marketing">
+            
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Heading</h2>
+                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                        </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Heading</h2>
+                        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                        </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+                        <h2>Heading</h2>
+                        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                        </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+            
+            
+            <!-- START THE FEATURETTES -->
+            
+            <hr class="featurette-divider">
+            
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                        </div>
+            </div>
+            
+            <hr class="featurette-divider">
+            
+            <div class="row featurette">
+                <div class="col-md-7 col-md-push-5">
+                    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5 col-md-pull-7">
+                    <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                        </div>
+            </div>
+            
+            <hr class="featurette-divider">
+            
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+                        </div>
+            </div>
+            
+            <hr class="featurette-divider">
+            
+            <!-- /END THE FEATURETTES -->
+            
+            
+            <!-- FOOTER -->
+            <footer>
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>&copy; 2015 &middot; David</p>
+            </footer>
+        
+        </div><!-- /.container -->
+        
         
         <!-- Bootstrap core JavaScript
          ================================================== -->
