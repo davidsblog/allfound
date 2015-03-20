@@ -8,6 +8,7 @@
 #include "dwebsvr.h"
 
 #define FILE_CHUNK_SIZE 256
+#define BIGGEST_FILE 104857600 // 100 Mb
 
 struct {
 	char *ext;
@@ -32,6 +33,7 @@ struct {
     {"svg","image/svg+xml" },
     {"eot","application/vnd.ms-fontobject" },
     {"mp4","video/mp4" },
+    {"pdf","application/pdf" },
 	{0,0} };
 
 void null_logger(int, char*, char*, int);
@@ -51,6 +53,7 @@ int main(int argc, char **argv)
 
 void null_logger(int type, char *s1, char *s2, int socket_fd)
 {
+    if (type==42) printf("ERROR: %s %s", s1, s2);
     // log to null :-)
 }
 
@@ -90,6 +93,12 @@ void send_file_response(struct hitArgs *args, char *path, char *request_body, in
     len = (long)lseek(file_id, (off_t)0, SEEK_END); // lseek to the file end to find the length
     lseek(file_id, (off_t)0, SEEK_SET); // lseek back to the file start
     
+    if (len > BIGGEST_FILE)
+    {
+        string_free(response);
+        return forbidden_403(args, "files this large are not supported");
+    }
+    
     string_add(response, "HTTP/1.1 200 OK\nServer: dweb\n");
     string_add(response, "Connection: close\n");
     string_add(response, "Content-Type: ");
@@ -99,7 +108,7 @@ void send_file_response(struct hitArgs *args, char *path, char *request_body, in
     // send file in blocks
     while ((len = read(file_id, response->ptr, FILE_CHUNK_SIZE)) > 0)
     {
-        write(args->socketfd, response->ptr, len);
+        if (write(args->socketfd, response->ptr, len) <=0) break;
     }
     string_free(response);
     close(file_id);

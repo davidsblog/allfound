@@ -168,10 +168,10 @@ void found_302(struct hitArgs *args, char *url, char *path)
     STRING *headers = new_string(255);
     string_add(headers, "HTTP/1.1 302 Found\nServer: dweb\nLocation: ");
     string_add(headers, url!=NULL ? url : "/index.html");
-    write_html(args->socketfd, string_chars(headers), "");
+    write_header(args->socketfd, string_chars(headers), 0);
     string_free(headers);
     
-    args->logger_function(LOG, "302 Moved Temporarily", path, args->socketfd);
+    args->logger_function(LOG, "302 Found", path, args->socketfd);
 }
 
 void default_logger(log_type type, char *title, char *description, int socket_fd)
