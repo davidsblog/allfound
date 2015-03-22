@@ -82,10 +82,10 @@ void send_file_response(struct hitArgs *args, char *path, char *request_body, in
         }
     }
     
-    // never send a 404 ... send the homepage instead.
+    // never send a 404 ... redirect to the homepage instead.
     if (content_type == NULL || (file_id = open(path, O_RDONLY), file_id == -1))
     {
-        found_302(args, NULL, path);
+        found_302(args, "http://hot.spot/index.html", path);
         return;
     }
     
@@ -99,7 +99,7 @@ void send_file_response(struct hitArgs *args, char *path, char *request_body, in
         return forbidden_403(args, "files this large are not supported");
     }
     
-    string_add(response, "HTTP/1.1 200 OK\nServer: dweb\n");
+    string_add(response, "HTTP/1.1 200 OK\n");
     string_add(response, "Connection: close\n");
     string_add(response, "Content-Type: ");
     string_add(response, content_type);

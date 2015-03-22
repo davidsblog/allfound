@@ -132,7 +132,7 @@ void write_html(int socket_fd, char *head, char *html)
 void forbidden_403(struct hitArgs *args, char *info)
 {
 	write_html(args->socketfd,
-        "HTTP/1.1 403 Forbidden\nServer: dweb\nConnection: close\nContent-Type: text/html",
+        "HTTP/1.1 403 Forbidden\nConnection: close\nContent-Type: text/html",
 		"<html><head>\n<title>403 Forbidden</title>\n"
 		"</head><body>\n<h1>Forbidden</h1>\nThe requested URL, file type or operation is not allowed on this simple webserver.\n</body>"
 		"</html>");
@@ -142,7 +142,7 @@ void forbidden_403(struct hitArgs *args, char *info)
 void notfound_404(struct hitArgs *args, char *info)
 {
 	write_html(args->socketfd,
-        "HTTP/1.1 404 Not Found\nServer: dweb\nConnection: close\nContent-Type: text/html",
+        "HTTP/1.1 404 Not Found\nConnection: close\nContent-Type: text/html",
 		"<html><head>\n<title>404 Not Found</title>\n"
 		"</head><body>\n<h1>Not Found</h1>\nThe requested URL was not found on this server.\n</body></html>");
 
@@ -152,7 +152,7 @@ void notfound_404(struct hitArgs *args, char *info)
 void ok_200(struct hitArgs *args, char *custom_headers, char *html, char *path)
 {
 	STRING *headers = new_string(255);
-    string_add(headers, "HTTP/1.1 200 OK\nServer: dweb\nCache-Control: no-cache\nPragma: no-cache");
+    string_add(headers, "HTTP/1.1 200 OK\nCache-Control: no-cache\nPragma: no-cache");
     if (custom_headers != NULL)
     {
         string_add(headers, custom_headers);
@@ -166,7 +166,7 @@ void ok_200(struct hitArgs *args, char *custom_headers, char *html, char *path)
 void found_302(struct hitArgs *args, char *url, char *path)
 {
     STRING *headers = new_string(255);
-    string_add(headers, "HTTP/1.1 302 Found\nServer: dweb\nLocation: ");
+    string_add(headers, "HTTP/1.1 302 Found\nLocation: ");
     string_add(headers, url!=NULL ? url : "/index.html");
     write_header(args->socketfd, string_chars(headers), 0);
     string_free(headers);
